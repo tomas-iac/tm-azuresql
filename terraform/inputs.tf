@@ -37,3 +37,13 @@ variable "sku" {
   default = "GP_Gen5_2"
 }
 
+variable "logAnalyticsWorkspaceId" {
+  type    = string
+  default = null
+}
+
+variable "enableMonitoring" {
+  type    = bool
+  default = false
+}
+

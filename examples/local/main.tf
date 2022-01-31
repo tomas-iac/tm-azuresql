@@ -32,16 +32,27 @@ resource "azurerm_private_dns_zone_virtual_network_link" "test" {
   virtual_network_id    = azurerm_virtual_network.test.id
 }
 
+// Monitoring
+resource "azurerm_log_analytics_workspace" "test" {
+  name                = "test-kjahsdfkjhd37454382"
+  location            = azurerm_resource_group.test.location
+  resource_group_name = azurerm_resource_group.test.name
+  sku                 = "PerGB2018"
+  retention_in_days   = 30
+}
+
 // Module testing (local reference)
 module "azuresql" {
-  source            = "../../terraform"
-  serverName        = "project1-sql-dfkusfvj34324"
-  dbName            = "mydb"
-  location          = azurerm_resource_group.test.location
-  resourceGroupName = azurerm_resource_group.test.name
-  subnetId          = azurerm_subnet.test.id
-  privateDnsZoneId  = azurerm_private_dns_zone.privateendpoints.id
-  adminUsername     = "tomas"
-  adminPassword     = "Azure12345678"
+  source                  = "../../terraform"
+  serverName              = "project1-sql-dfkusfvj34324"
+  dbName                  = "mydb"
+  location                = azurerm_resource_group.test.location
+  resourceGroupName       = azurerm_resource_group.test.name
+  subnetId                = azurerm_subnet.test.id
+  privateDnsZoneId        = azurerm_private_dns_zone.privateendpoints.id
+  adminUsername           = "tomas"
+  adminPassword           = "Azure12345678"
+  logAnalyticsWorkspaceId = azurerm_log_analytics_workspace.test.id
+  enableMonitoring        = true
 }
 
