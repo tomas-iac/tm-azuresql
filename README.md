@@ -12,6 +12,6 @@ terraform apply -auto-approve
 
 ## Tests
 cd tests
-go mod init aks
+go mod init azuresql
 go get github.com/gruntwork-io/terratest/modules/terraform
-go test -v -timeout 60m
+go test -timeout 60m
