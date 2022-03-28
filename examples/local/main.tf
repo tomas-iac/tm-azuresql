@@ -1,7 +1,7 @@
 
 resource "azurerm_resource_group" "test" {
   name     = "unit-test-sql-rg"
-  location = "northeurope"
+  location = "eastus2"
 }
 
 resource "azurerm_virtual_network" "test" {
