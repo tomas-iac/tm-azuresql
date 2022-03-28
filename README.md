@@ -1,4 +1,4 @@
-# tm-azuresqk
+# tm-azuresql
 Terraform module - Azure SQL
 
 ## Module testing
