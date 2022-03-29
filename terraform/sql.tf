@@ -85,3 +85,5 @@ resource "azurerm_mssql_server_extended_auditing_policy" "sql" {
   server_id              = azurerm_mssql_server.sql.id
   log_monitoring_enabled = true
 }
+
+// ZMENA
