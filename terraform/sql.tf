@@ -72,16 +72,26 @@ resource "azurerm_monitor_diagnostic_setting" "sql" {
   lifecycle {
     ignore_changes = [log, metric]
   }
+
+  depends_on = [
+    azurerm_mssql_database.test
+  ]
 }
 
 resource "azurerm_mssql_database_extended_auditing_policy" "sql" {
   count                  = var.enableMonitoring ? 1 : 0
   database_id            = "${azurerm_mssql_server.sql.id}/databases/master"
   log_monitoring_enabled = true
+  depends_on = [
+    azurerm_mssql_database.test
+  ]
 }
 
 resource "azurerm_mssql_server_extended_auditing_policy" "sql" {
   count                  = var.enableMonitoring ? 1 : 0
   server_id              = azurerm_mssql_server.sql.id
   log_monitoring_enabled = true
+  depends_on = [
+    azurerm_mssql_database.test
+  ]
 }
