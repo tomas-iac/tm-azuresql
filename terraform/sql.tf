@@ -95,3 +95,5 @@ resource "azurerm_mssql_server_extended_auditing_policy" "sql" {
     azurerm_mssql_database.test
   ]
 }
+
+// ZMENA
