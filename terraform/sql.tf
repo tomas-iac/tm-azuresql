@@ -96,4 +96,4 @@ resource "azurerm_mssql_server_extended_auditing_policy" "sql" {
   ]
 }
 
-// ZMENA
+// ZMENA 2
